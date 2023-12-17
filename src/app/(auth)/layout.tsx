@@ -3,8 +3,9 @@ import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 
 import Navbar from '@/components/Navbar';
 import { redirect } from 'next/navigation';
+import Link from 'next/link';
 
-export default async function DashboardLayout({
+export default async function AuthLayout({
 	children,
 }: {
 	children: React.ReactNode;
@@ -13,15 +14,19 @@ export default async function DashboardLayout({
 
 	const { data } = await supabase.auth.getSession();
 
-	if (!data.session) {
-		// we are not logged in
-		console.log('Not logged in , route protected BOIII');
-		redirect('/login');
+	if (data.session) {
+		// we are  logged in , now we can't go to this route
+		console.log('Already logged in , wtf do you want to do with auth routes');
+		redirect('/');
 	}
 
 	return (
 		<div>
-			<Navbar user={data?.session?.user} />
+			<nav className="flex justify-between w-full p-5 bg-gray-400">
+				<p>Auth Page</p>
+				<Link href="/login">Log In</Link>
+				<Link href="/signup">Sign Up</Link>
+			</nav>
 			{children}
 		</div>
 	);
