@@ -1,6 +1,6 @@
-import { User } from '@supabase/supabase-js';
-import React from 'react';
-import DeleteButton from './DeleteButton';
+import { User } from "@supabase/supabase-js";
+import React from "react";
+import DeleteButton from "./DeleteButton";
 
 const Navbar = ({ user }: { user?: User }) => {
 	return (

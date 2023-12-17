@@ -1,8 +1,8 @@
-import { cookies } from 'next/headers';
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
 
-import Navbar from '@/components/Navbar';
-import { redirect } from 'next/navigation';
+import Navbar from "@/components/Navbar";
+import { redirect } from "next/navigation";
 
 export default async function DashboardLayout({
 	children,
@@ -15,8 +15,8 @@ export default async function DashboardLayout({
 
 	if (!data.session) {
 		// we are not logged in
-		console.log('Not logged in , route protected BOIII');
-		redirect('/login');
+		console.log("Not logged in , route protected BOIII");
+		redirect("/login");
 	}
 
 	return (

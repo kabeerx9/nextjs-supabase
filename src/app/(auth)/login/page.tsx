@@ -1,23 +1,23 @@
-'use client';
-import React, { useState } from 'react';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+"use client";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import React, { useState } from "react";
 
-import AuthForm from '@/components/AuthForm';
-import { useRouter } from 'next/navigation';
+import AuthForm from "@/components/AuthForm";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
-	const [error, setError] = useState('');
+	const [error, setError] = useState("");
 
 	const router = useRouter();
 
 	const handleSubmit = async (
 		e: React.FormEvent,
 		email: string,
-		password: string
+		password: string,
 	) => {
 		e.preventDefault();
-		console.log(email, password, 'user login ');
-		setError('');
+		console.log(email, password, "user login ");
+		setError("");
 		const supabase = createClientComponentClient();
 		const { error } = await supabase.auth.signInWithPassword({
 			email,
@@ -27,7 +27,7 @@ const Login = () => {
 			setError(error.message);
 			return;
 		}
-		router.push('/');
+		router.push("/");
 	};
 
 	return (

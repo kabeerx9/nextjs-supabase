@@ -1,20 +1,20 @@
-'use client';
-import AuthForm from '@/components/AuthForm';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-import { useRouter } from 'next/navigation';
-import React, { useState } from 'react';
+"use client";
+import AuthForm from "@/components/AuthForm";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
 
 const Signup = () => {
 	const router = useRouter();
 
-	const [error, setError] = useState('');
+	const [error, setError] = useState("");
 	const handleSubmit = async (
 		e: React.FormEvent,
 		email: string,
-		password: string
+		password: string,
 	) => {
 		e.preventDefault();
-		console.log(email, password, 'user signup');
+		console.log(email, password, "user signup");
 		const supabase = createClientComponentClient();
 
 		const { error } = await supabase.auth.signUp({
@@ -28,7 +28,7 @@ const Signup = () => {
 			setError(error.message);
 			return;
 		}
-		router.push('/verify');
+		router.push("/verify");
 	};
 	return (
 		<main className="flex flex-col gap-5 items-center justify-center h-screen">

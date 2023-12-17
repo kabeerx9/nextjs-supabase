@@ -1,9 +1,9 @@
-import { cookies } from 'next/headers';
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
 
-import Navbar from '@/components/Navbar';
-import { redirect } from 'next/navigation';
-import Link from 'next/link';
+import Navbar from "@/components/Navbar";
+import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export default async function AuthLayout({
 	children,
@@ -16,8 +16,8 @@ export default async function AuthLayout({
 
 	if (data.session) {
 		// we are  logged in , now we can't go to this route
-		console.log('Already logged in , wtf do you want to do with auth routes');
-		redirect('/');
+		console.log("Already logged in , wtf do you want to do with auth routes");
+		redirect("/");
 	}
 
 	return (
